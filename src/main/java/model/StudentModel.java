@@ -11,6 +11,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 @Entity
 @Table
 public class StudentModel {
@@ -21,8 +22,22 @@ public class StudentModel {
     )
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
             generator = "student_sequence")
+
 private Long id;
+
 private String name;
+
 private String address;
+
 private String email;
+
+    @Override
+    public String toString() {
+        return "StudentModel{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }
