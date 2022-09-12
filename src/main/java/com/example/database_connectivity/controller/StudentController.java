@@ -47,4 +47,9 @@ public class StudentController {
     {
         studentServiceInterface.updateStudent(studentId,name,email);
     }
+    @GetMapping("innerJoin/{grade}")
+    public List<StudentModel> getAllStudentByInnerJoin(@PathVariable String grade)
+    {
+            return studentServiceInterface.getSelectedUser(grade);
+    }
 }

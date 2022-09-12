@@ -19,4 +19,6 @@ public interface StudentServiceInterface {
     void removeStudent(Long studentId);
 
     void updateStudent(Long studentId, String name, String email);
+
+    List<StudentModel> getSelectedUser(String grade);
 }

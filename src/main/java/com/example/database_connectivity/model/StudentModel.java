@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -31,6 +32,10 @@ private String address;
 
 private String email;
 
+@OneToOne(cascade = CascadeType.ALL)
+
+private ClassModel classModel;
+
     public StudentModel(String name, String address, String email) {
         this.name=name;
         this.address=address;
@@ -46,4 +51,5 @@ private String email;
                 ", email='" + email + '\'' +
                 '}';
     }
+
 }

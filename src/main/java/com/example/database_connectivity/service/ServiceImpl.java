@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
+
 
 @Component
 public class ServiceImpl implements StudentServiceInterface {
@@ -74,5 +74,10 @@ public class ServiceImpl implements StudentServiceInterface {
             studentModel.setEmail(email);
         }
 
+    }
+
+    @Override
+    public List<StudentModel> getSelectedUser(String grade) {
+        return studentRepository.findByClassModelGrade(grade);
     }
 }
