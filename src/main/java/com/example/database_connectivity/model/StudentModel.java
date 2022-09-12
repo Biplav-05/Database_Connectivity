@@ -1,4 +1,4 @@
-package model;
+package com.example.database_connectivity.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,6 +30,12 @@ private String name;
 private String address;
 
 private String email;
+
+    public StudentModel(String name, String address, String email) {
+        this.name=name;
+        this.address=address;
+        this.email=email;
+    }
 
     @Override
     public String toString() {
