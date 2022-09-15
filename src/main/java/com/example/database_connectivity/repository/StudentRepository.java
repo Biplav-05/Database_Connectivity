@@ -15,6 +15,6 @@ public interface StudentRepository extends JpaRepository<StudentModel,Long> {
  //   @Query("SELECT StudentModel  so FROM  student_model so WHERE s.email=?1 ");
    Optional<StudentModel> findStudentModelByEmail(String email);
 
-   List<StudentModel> findByClassModelGrade(String grade);
+
 
 }

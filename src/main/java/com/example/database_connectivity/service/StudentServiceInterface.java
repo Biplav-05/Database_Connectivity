@@ -1,11 +1,12 @@
 package com.example.database_connectivity.service;
 
+import com.example.database_connectivity.exception.UpdateFaliureException;
+import com.example.database_connectivity.model.ApiResponse;
 import com.example.database_connectivity.model.StudentModel;
-//import model.StudentModel;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public interface StudentServiceInterface {
@@ -16,9 +17,10 @@ public interface StudentServiceInterface {
 
     void addNewStudent(StudentModel studentModel);
 
-    void removeStudent(Long studentId);
+     ApiResponse removeStudent(Long studentId);
 
-    void updateStudent(Long studentId, String name, String email);
+    ApiResponse updateStudent(StudentModel studentModel) throws UpdateFaliureException;
 
-    List<StudentModel> getSelectedUser(String grade);
+//    List<StudentModel> getSelectedUser(String grade);
+  Optional<StudentModel> findById(Long id);
 }

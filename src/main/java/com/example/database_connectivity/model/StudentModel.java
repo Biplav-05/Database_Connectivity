@@ -24,22 +24,20 @@ public class StudentModel {
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
             generator = "student_sequence")
 
-private Long id;
+    private Long id;
 
-private String name;
+    private String name;
 
-private String address;
+    private String address;
 
-private String email;
+    private String email;
 
-@OneToOne(cascade = CascadeType.ALL)
 
-private ClassModel classModel;
 
     public StudentModel(String name, String address, String email) {
-        this.name=name;
-        this.address=address;
-        this.email=email;
+        this.name = name;
+        this.address = address;
+        this.email = email;
     }
 
     @Override

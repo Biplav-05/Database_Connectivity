@@ -1,21 +1,20 @@
 package com.example.database_connectivity.controller;
 
+import com.example.database_connectivity.exception.UpdateFaliureException;
+import com.example.database_connectivity.model.ApiResponse;
 import com.example.database_connectivity.model.StudentModel;
 import com.example.database_connectivity.service.StudentServiceInterface;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 
 import java.util.List;
 
 @RestController
 @RequestMapping("api/")
-public class StudentController {
+public class StudentController extends ApiResponse {
 
     private StudentServiceInterface studentServiceInterface;
 
-    @Autowired
+
     public StudentController(StudentServiceInterface studentServiceInterface)
     {
         this.studentServiceInterface=studentServiceInterface;
@@ -30,26 +29,25 @@ public class StudentController {
     }
 
 
-    @PostMapping("/postData")
-    public void registerNewStudent(@RequestBody StudentModel studentModel)
-    {
-        studentServiceInterface.addNewStudent(studentModel);
-    }
+//    @PostMapping("/postData")
+//    public void registerNewStudent(@RequestBody StudentModel studentModel)
+//    {
+//        studentServiceInterface.addNewStudent(studentModel);
+//    }
 
     @DeleteMapping("/delete/{studentId}")
-    public void deleteStudent(@PathVariable Long studentId)
+    public ApiResponse deleteStudent(@PathVariable Long studentId)
     {
-        studentServiceInterface.removeStudent(studentId);
+
+         return studentServiceInterface.removeStudent(studentId);
+
+
+
+       // return studentServiceInterface.removeStudent(studentId);
     }
 
-    @PutMapping ("update/{studentId}")
-    public void updateStudent(@PathVariable Long studentId,@RequestParam (required = false) String name,@RequestParam(required = false) String email)
-    {
-        studentServiceInterface.updateStudent(studentId,name,email);
-    }
-    @GetMapping("innerJoin/{grade}")
-    public List<StudentModel> getAllStudentByInnerJoin(@PathVariable String grade)
-    {
-            return studentServiceInterface.getSelectedUser(grade);
+    @PutMapping ("addAndUpdate")
+    public ApiResponse updateStudent(@RequestBody StudentModel studentModel) throws UpdateFaliureException{
+        return  studentServiceInterface.updateStudent(studentModel);
     }
 }
